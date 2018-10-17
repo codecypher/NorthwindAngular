@@ -1,0 +1,59 @@
+﻿<h1>{{title}}</h1>
+
+<div *ngIf="isLoading">
+    Loading...
+</div>
+
+<div class="error" *ngIf="errorMessage">
+    {{ errorMessage }}
+</div>
+
+<div>
+    <button type="button" (click)="create()" name="newCustomer" class="btn btn-default">New</button>
+</div>
+
+<div *ngIf="data">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>CustomerID</th>
+                <th>Company Name</th>
+                <th>Contact Name</th>
+                <th>City</th>
+                <th>Region</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customer of data | async | 
+                paginate: { id: 'server', 
+                            itemsPerPage: pageSize, 
+                            currentPage: page, 
+                            totalItems: total }"
+                [class.selected]="customer.customerID === selectedId"
+                (click)="onSelect(customer)">
+<!--
+            <tr *ngFor="let customer of customers"
+                [class.selected]="customer.customerID === selectedId"
+                (click)="onSelect(customer)">
+-->
+                <td>{{ customer.customerID }}</td>
+                <td>{{ customer.companyName }}</td>
+                <td>{{ customer.contactName }}</td>
+                <td>{{ customer.city }}</td>
+                <td>{{ customer.region }}</td>
+                <td>{{ customer.country }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<pagination-controls id="server"
+                    (pageChange)="getPage($event)"
+                    maxSize="25"
+                    directionLinks="true"
+                    previousLabel="<"
+                    nextLabel=">"
+                    class="pagination"
+                    autoHide="true">
+</pagination-controls>

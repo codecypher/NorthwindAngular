@@ -1,0 +1,37 @@
+﻿.selected {
+    background-color: #CFD8DC !important;
+    color: white;
+}
+
+.pagination /deep/ .ngx-pagination li {
+    font-size: 18px !important;
+}
+
+.pagination-previous a {
+    content: "2660" !important;
+}
+
+.pagination-previous span {
+}
+
+/*
+button {
+    font-family: Arial;
+    background-color: #eee;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    cursor: hand;
+}
+*/
+
+button:hover {
+    background-color: #cfd8dc;
+}
+
+button.delete {
+    float: right;
+    background-color: gray !important;
+    color: white;
+}

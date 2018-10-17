@@ -1,0 +1,44 @@
+﻿<h1>{{title}}</h1>
+
+<div *ngIf="isLoading">
+    Loading...
+</div>
+
+<div class="error" *ngIf="errorMessage">
+    {{ errorMessage }}
+</div>
+
+<div *ngIf="!isLoading && employees">
+    <div>
+        <button type="button" (click)="create()" name="newEmployee" class="btn btn-default">New</button>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Employee</th>
+                <th>Full Name</th>
+                <th>Title</th>
+                <th>BirthDate</th>
+                <th>HireDate</th>
+                <th>City</th>
+                <th>Region</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees"
+                [class.selected]="employee.employeeID === selectedId"
+                (click)="onSelect(employee)">
+                <td>{{ employee.employeeID }}</td>
+                <td>{{ employee.firstName }} {{ employee.lastName }}</td>
+                <td>{{ employee.title }}</td>
+                <td>{{ employee.birthDate }}</td>
+                <td>{{ employee.hireDate }}</td>
+                <td>{{ employee.city }}</td>
+                <td>{{ employee.region }}</td>
+                <td>{{ employee.country }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

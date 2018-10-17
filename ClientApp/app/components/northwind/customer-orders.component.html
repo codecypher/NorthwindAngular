@@ -1,0 +1,31 @@
+﻿<div class="error" *ngIf="errorMessage">
+    {{ errorMessage }}
+</div>
+
+<div *ngIf="customer">
+    <h2>{{ customer.contactName }}</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>OrderID</th>
+                <th>EmployeeID</th>
+                <th>OrderDate</th>
+                <th>ShippedDate</th>
+                <th>ShipVia</th>
+                <th>Freight</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders"
+                [class.selected]="order.orderID === selectedId"
+                (click)="onSelect(order)">
+                <td>{{ order.orderID }}</td>
+                <td>{{ order.employee.firstName }} {{ order.employee.lastName }}</td>
+                <td>{{ order.orderDate }}</td>
+                <td>{{ order.shippedDate }}</td>
+                <td>{{ order.shipper.companyName }}</td>
+                <td>{{ order.freight }}</td>
+            </tr>
+        </tbody>
+    </table>   
+</div>

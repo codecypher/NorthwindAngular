@@ -1,0 +1,82 @@
+﻿<h2>New Customer</h2>
+
+<div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+<form role="form" id="formNewCustomer" action="" method="post" class="form-horizontal">
+    <fieldset>
+        <legend>{{ title }}</legend>
+        <div class="row">
+            <div class="form-group">
+                <label for="customerID" class="col-sm-2 control-label">CustomerID:</label>
+                <div class="col-sm-6"><input type="text" name="customerID" [(ngModel)]="customer.customerID" class="form-control" placeholder="Required" maxlength="5"/></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="companyName" class="col-sm-2 control-label">Company Name:</label>
+                <div class="col-sm-6"><input type="text" name="companyName" [(ngModel)]="customer.companyName" class="form-control" maxlength="40"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="contactName" class="col-sm-2 control-label">Contact Name:</label>
+                <div class="col-sm-6"><input type="text" name="contactName" [(ngModel)]="customer.contactName" class="form-control" maxlength="80"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="address" class="col-sm-2 control-label">Address:</label>
+                <div class="col-sm-6"><input type="text" name="address" [(ngModel)]="customer.address" class="form-control" maxlength="80"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="city" class="col-sm-2 control-label">City:</label>
+                <div class="col-sm-6"><input type="text" name="city" [(ngModel)]="customer.city" class="form-control" maxlength="40"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="region" class="col-sm-2 control-label">Region:</label>
+                <div class="col-sm-6"><input type="text" name="region" [(ngModel)]="customer.region" class="form-control" maxlength="4"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="postalCode" class="col-sm-2 control-label">Postal Code:</label>
+                <div class="col-sm-6"><input type="text" name="postalCode" [(ngModel)]="customer.postalCode" class="form-control" maxlength="10"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="postalCode" class="col-sm-2 control-label">Country:</label>
+                <div class="col-sm-6"><input type="text" name="country" [(ngModel)]="customer.country" class="form-control" maxlength="10"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="phone" class="col-sm-2 control-label">Phone:</label>
+                <div class="col-sm-6"><input type="text" name="phone" [(ngModel)]="customer.phone" class="form-control" maxlength="24"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="fax" class="col-sm-2 control-label">Fax:</label>
+                <div class="col-sm-6"><input type="text" name="fax" [(ngModel)]="customer.fax" class="form-control" maxlength="24"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <button type="button" (click)="save()" name="save" class="btn btn-default">Save</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="message" class="h3 col-sm-offset-2 col-sm-6">{{ message }}</div>
+        </div>
+    </fieldset>
+</form>
+
+<button (click)="goBack()">Back</button>
+

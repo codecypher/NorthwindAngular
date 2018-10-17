@@ -1,0 +1,165 @@
+﻿<div *ngIf="isLoading">Loading...</div>
+
+<div *ngIf="!isLoading && !employee">
+    <h2>Sorry, no record found for {{ id }}</h2>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+</div>
+
+<div *ngIf="!isLoading && employee">
+
+    <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+    <form role="form" id="formEmployee" action="" method="post" class="form-horizontal">
+        <fieldset>
+            <legend>{{ title }}</legend>
+            <div class="row">
+                <div class="form-group">
+                    <label for="id" class="col-sm-2 control-label">ID:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="employeeID" [(ngModel)]="employee.employeeID" class="form-control" value="{{ employee.employeeID }}" readonly>
+                    </div>
+                    <div class="col-sm-4 help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="fname" class="col-sm-2 control-label">First Name:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="firstName" [(ngModel)]="employee.firstName" class="form-control" maxlength="10" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="lname" class="col-sm-2 control-label">Last Name:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="lastName" [(ngModel)]="employee.lastName" class="form-control" maxlength="20" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="lname" class="col-sm-2 control-label">Title:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="title" [(ngModel)]="employee.title" class="form-control" maxlength="30" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="birth_date" class="col-sm-2 control-label">Birth Date:</label>
+                    <div class="col-sm-6">
+                        <input type="date" name="birthDate" [(ngModel)]="employee.birthDate" class="form-control" maxlength="10">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="hire_date" class="col-sm-2 control-label">Hire Date:</label>
+                    <div class="col-sm-6">
+                        <input type="date" name="hireDate" [(ngModel)]="employee.hireDate" class="form-control" maxlength="10">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="address" class="col-sm-2 control-label">Address:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="address" [(ngModel)]="employee.address" class="form-control" maxlength="60">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="city" class="col-sm-2 control-label">City:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="city" [(ngModel)]="employee.city" class="form-control" maxlength="15">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="region" class="col-sm-2 control-label">Region:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="region" [(ngModel)]="employee.region" class="form-control" maxlength="15">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="postalCode" class="col-sm-2 control-label">PostaLCode:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="postalCode" [(ngModel)]="employee.postalCode" class="form-control" maxlength="10">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="postalCode" class="col-sm-2 control-label">Country:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="country" [(ngModel)]="employee.country" class="form-control" maxlength="15">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="homePhone" class="col-sm-2 control-label">Home Phone:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="homePhone" [(ngModel)]="employee.homePhone" class="form-control" maxlength="24">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="extension" class="col-sm-2 control-label">Extension:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="extension" [(ngModel)]="employee.extension" class="form-control" maxlength="4">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="notes" class="col-sm-2 control-label">Notes:</label>
+                    <!--<div class="col-sm-6"><input type="text" name="notes" [(ngModel)]="employee.notes" class="form-control" maxlength="10"></div>-->
+                    <div class="col-sm-6">
+                        <textarea name="notes" [(ngModel)]="employee.notes" class="form-control" rows="5" cols="50"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="reportsTo" class="col-sm-2 control-label">Reports To:</label>
+                    <div class="col-sm-6">
+                        <!--<input type="text" name="reportsTo" [(ngModel)]="employee.reportsTo" class="form-control" maxlength="10">-->
+                        <select id="reportsTo" class="form-control"
+                                name="reportsTo" [(ngModel)]="employee.reportsTo">
+                            <option *ngFor="let emp of employeeList" [value]="emp.employeeID">{{ emp.firstName }} {{ emp.lastName }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-6">
+                        <button type="button" (click)="save()" name="save" class="btn btn-default">Save</button>
+                        <button type="button" (click)="delete()" name="delete" class="btn btn-default">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="message" class="h3 col-sm-offset-2 col-sm-6">{{ message }}</div>
+            </div>
+        </fieldset>
+    </form>
+
+    <button type="button" (click)="goBack()" name="Back" class="btn btn-default">Back</button>
+
+</div>
+
+<script>
+    $(function () {
+        $('#datepicker1').datepicker();
+    });
+</script>
